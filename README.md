@@ -6,11 +6,13 @@ the name 1hant comes from obviously one + hand with the mispelling on purpose si
 it is meant as an easy to use layout trying to minimalize effort pressing on the keys hence most keys are a chord with 2 keys
 its focused for the left hand because most people use a mouse with their right hand
 
-[ ] - keybinding menu
-[ ] - chord speed setting
-[ ] - right hand support
-[ ] - make it pretty ✨
+### Todo:
+- [ ] keybinding menu
+- [ ] chord speed setting
+- [ ] right hand support
+- [ ] make it pretty ✨
 
+### Layout:
 ```
 -- left handed --
 
