@@ -2,6 +2,7 @@ const input = document.getElementById("input");
 const translation_selection = document.getElementById("translation-selection");
 const tt_text = document.getElementById("tt-text");
 const tt_type = document.getElementById("tt-type");
+const keyboard = document.getElementById("keyboard");
 
 const chord_time_ms = 35;
 const translation_presets = {
@@ -45,7 +46,17 @@ const translation_presets = {
         o: "t",
         f: "s"
     },
-    "none": {
+    "none-left": {
+        i: "i",
+        e: "e",
+        a: "a",
+        h: "h",
+        n: "n",
+        r: "r",
+        t: "t",
+        s: "s"
+    },
+    "none-right": {
         i: "i",
         e: "e",
         a: "a",
@@ -155,6 +166,13 @@ function send_key() {
 
 function update_layout() {
     let translation_selected = translation_selection.value;
+
+    if (translation_selected.includes("right")) {
+        keyboard.classList.add("right");
+    } else {
+        keyboard.classList.remove("right");
+    }
+
     translation = {};
     translation = translation_presets[translation_selected];
 }
