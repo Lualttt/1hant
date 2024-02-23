@@ -106,13 +106,22 @@ function keypress(e) {
     if (key === undefined) { return; }
     
     if (chord.length === 0) {
-        setTimeout(sendkey, chord_time_ms);
+        setTimeout(send_key, chord_time_ms);
     }
     
+    document.getElementById(`key-${key}`).classList.add("pressed");
+
     chord.push(key);
 }
 
-function sendkey() {
+function send_key() {
+    setTimeout(() => {
+        document.querySelectorAll(".pressed").forEach((e) => {
+            e.classList.remove("pressed");
+        });
+    }, 80);
+
+
     if (chord.length === 1) {
         input.value += chord[0];
 

@@ -47,3 +47,27 @@
         opacity: 0;
     }
 }
+
+.keyboard {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0.1em;
+    grid-row-gap: 0.1em;
+
+    aspect-ratio: 4/2;
+    height: 5em;
+
+    margin-bottom: 1em;
+}
+
+.keyboard * {
+    border: 1px solid black;
+    border-radius: 0.25em;
+    background-color: white;
+    transition: background-color 0.2s;
+}
+
+.keyboard .pressed {
+    background-color: black;
+}
