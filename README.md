@@ -65,6 +65,10 @@ Enter:
 ...#
 ###.
 
+Text Layer (default):
+...#
+#...
+
 Oneshot Punctuation Layer:
 ...#
 ##..

@@ -1002,17 +1002,35 @@ const word_list = [
     "public"
 ]
 
-function generate_sentence(length) {
+// this code kinda stinky ngl but it works
+function generate_sentence(length, punctuation) {
     let sentence = "";
     
     // did it in a funky way so it doesnt add a trailing space to the sentence
     for (let i = 0; i < length - 1; i++) {
-        sentence += word_list[word_list.length * Math.random() | 0];
-        sentence += " ";
+        let word =word_list[word_list.length * Math.random() | 0]
+
+        if (punctuation) {
+            let ran = Math.random()
+
+            if (ran < 0.1) {
+                let char = Math.random() < 0.5 ? '"' : "'";
+                word = char + word + char;
+            } else if (ran > 0.9) {
+                let char = [",", ":", ";"][3 * Math.random() | 0];
+                word = word + char;
+            }
+        }
+
+        sentence += word + " ";
     }
-    
+
     sentence += word_list[word_list.length * Math.random() | 0];
-    
+
+    if (punctuation) {
+        sentence += [".", "!", "?"][3 * Math.random() | 0];
+    }
+
     // currently there is no support for uppercase
     return sentence.toLowerCase();
 }
