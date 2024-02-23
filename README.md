@@ -8,7 +8,7 @@ it is meant as an easy to use layout trying to minimalize effort pressing on the
 the bottom row is the home row
 
 ### Todo:
-- [ ] make backspace, enter, space and layer switches global chords
+- [x] make backspace, enter, space and layer switches global chords
 - [x] typing test like [monkey type](https://monkeytype.com)
 - [ ] add wpm stat to the typing test
 - [ ] keybinding menu

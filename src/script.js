@@ -69,6 +69,15 @@ const translation_presets = {
     }
 };
 const chords = {
+    global: {
+        "a,e,h,i": " ", // Space
+        "n,r,s,t": "Backspace",
+        "a,e,i,s": "\n", // Enter
+
+        "i,s": "LayerText",
+        "e,i,s": "LayerPunctuation",
+        "e,i,s,t": "LayerNumber"
+    },
     text: {
         "a,h": "g",
         "e,i": "y",
@@ -87,14 +96,7 @@ const chords = {
         "a,e,h": "j",
         "r,s,t": "q",
         "a,e,i": "x",
-        "n,r,t": "z",
-
-        "a,e,h,i": " ", // Space
-        "n,r,s,t": "Backspace",
-        "a,e,i,s": "\n", // Enter
-
-        "e,i,s": "LayerPunctuation",
-        "e,i,s,t": "LayerNumber"
+        "n,r,t": "z"
     },
     punctuation: {
         "n": ";",
@@ -104,9 +106,7 @@ const chords = {
         "i": "!",
         "e": "?",
         "a": ",",
-        "h": ".",
-
-        "i,s": "LayerText"
+        "h": "."
     },
     number: {
         "n": "5",
@@ -119,9 +119,7 @@ const chords = {
         "h": "4",
 
         "e,i": "0",
-        "a,h": "9",
-
-        "i,s": "LayerText"
+        "a,h": "9"
     }
 };
 
@@ -177,12 +175,19 @@ function send_key() {
     // and making it into a string its easy to find a chord like a,h in the dict
     chord = chord.sort().toString();
     
+    let pre_global = layer;
+
     if (!(chord in chords[layer])) {
-        chord = [];
-        return;
+        if (!(chord) in chords["global"]) {
+            chord = [];
+            return;
+        }
+
+        layer = "global";
     }
     
     let key = chords[layer][chord];
+    layer = pre_global;
 
     // Oneshot layers to return back to text
     if (layer === "punctuation") { layer = "text"; }
