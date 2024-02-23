@@ -1003,7 +1003,7 @@ const word_list = [
 ]
 
 // this code kinda stinky ngl but it works
-function generate_sentence(length, punctuation) {
+function generate_sentence(length, punctuation, numbers) {
     let sentence = "";
     
     // did it in a funky way so it doesnt add a trailing space to the sentence
@@ -1020,6 +1020,11 @@ function generate_sentence(length, punctuation) {
                 let char = [",", ":", ";"][3 * Math.random() | 0];
                 word = word + char;
             }
+        }
+
+        if (numbers && Math.random() < 0.1) {
+            let length = Math.random() * 3 | 0;
+            word = Math.random() * (length * 10) * 9 | 0;
         }
 
         sentence += word + " ";

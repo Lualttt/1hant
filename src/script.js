@@ -4,6 +4,7 @@ const tt_text = document.getElementById("tt-text");
 const tt_type = document.getElementById("tt-type");
 const keyboard = document.getElementById("keyboard");
 const punctuation_checkbox = document.getElementById("punctuation");
+const numbers_checkbox = document.getElementById("numbers");
 
 const chord_time_ms = 35;
 const translation_presets = {
@@ -247,6 +248,6 @@ function type_check(key) {
 }
 
 function reset_typing_test() {
-    tt_text.innerText = generate_sentence(10, punctuation_checkbox.checked);
+    tt_text.innerText = generate_sentence(10, punctuation_checkbox.checked, numbers_checkbox.checked);
     tt_type.innerText = "";
 }
