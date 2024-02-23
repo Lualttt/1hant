@@ -121,18 +121,14 @@ function keypress(e) {
     }
     
     document.getElementById(`key-${key}`).classList.add("pressed");
+    setTimeout(() => {
+        document.getElementById(`key-${key}`).classList.remove("pressed");
+    }, chord_time_ms + 50);
 
     chord.push(key);
 }
 
 function send_key() {
-    setTimeout(() => {
-        document.querySelectorAll(".pressed").forEach((e) => {
-            e.classList.remove("pressed");
-        });
-    }, 80);
-
-
     if (chord.length === 1) {
         input.value += chord[0];
 
