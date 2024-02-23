@@ -1,5 +1,5 @@
 # 1hant
-1hant (one hand) is an artsey.io + graphite inspired one handed keyboard layout
+1hant (one hand) is an [artsey.io](https://artsey.io) + [graphite](https://github.com/rdavison/graphite-layout) inspired one handed keyboard layout
 
 the name 1hant comes from obviously one + hand with the mispelling on purpose since you need a chord for the letter d and not for the letter t :P
 
