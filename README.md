@@ -9,7 +9,7 @@ its focused for the left hand because most people use a mouse with their right h
 ### Todo:
 - [ ] keybinding menu
 - [ ] chord speed setting
-- [ ] right hand support
+- [x] right hand support
 - [ ] punctuation & numbers
 - [ ] holding down a chord doesnt repeat the chord
 - [ ] make it pretty ✨

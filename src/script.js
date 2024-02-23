@@ -1,15 +1,48 @@
 const input = document.getElementById("input");
+const translation_selection = document.getElementById("translation-selection");
 
 const chord_time_ms = 35;
-const translation = {
-    n: "i",
-    r: "e",
-    t: "a",
-    s: "h",
-    b: "n",
-    l: "r",
-    d: "t",
-    w: "s"
+const translation_presets = {
+    "qwerty-left": {
+        a: "i",
+        s: "e",
+        d: "a",
+        f: "h",
+        q: "n",
+        w: "r",
+        e: "t",
+        r: "s"
+    },
+    "qwerty-right": {
+        ";": "i",
+        l: "e",
+        k: "a",
+        j: "h",
+        p: "n",
+        o: "r",
+        i: "t",
+        u: "s"
+    },
+    "graphite-left": {
+        n: "i",
+        r: "e",
+        t: "a",
+        s: "h",
+        b: "n",
+        l: "r",
+        d: "t",
+        w: "s"
+    },
+    "graphite-right": {
+        i: "i",
+        e: "e",
+        a: "a",
+        h: "h",
+        j: "n",
+        u: "r",
+        o: "t",
+        f: "s"
+    },
 };
 const chords = {
     "a,h": "g",
@@ -36,9 +69,20 @@ const chords = {
     "a,e,i,s": "Enter"
 };
 
+let translation = {
+    a: "i",
+    s: "e",
+    d: "a",
+    f: "h",
+    q: "n",
+    w: "r",
+    e: "t",
+    r: "s"
+};
 let chord = [];
 
 input.addEventListener("keydown", keypress);
+translation_selection.addEventListener("change", update_layout);
 
 function keypress(e) {
     e.preventDefault();
@@ -54,8 +98,6 @@ function keypress(e) {
 }
 
 function sendkey() {
-    console.log("---");
-    
     if (chord.length === 1) {
         input.value += chord[0];
         chord = [];
@@ -76,7 +118,13 @@ function sendkey() {
     if (key === "Space") { input.value += " "; }
     else if (key === "Backspace") { input.value = input.value.slice(0, -1); }
     else if (key === "Enter") { input.value += "\n"; }
-    else { input.value += key };
+    else { input.value += key }
     
     chord = [];
+}
+
+function update_layout(e) {
+    let translation_selected = e.target.value;
+    translation = {};
+    translation = translation_presets[translation_selected];
 }
