@@ -64,4 +64,12 @@ Backspace:
 Enter:
 ...#
 ###.
+
+Oneshot Punctuation Layer:
+...#
+##..
+
+--- Punctuation ---
+;:'"
+!?,.
 ```
