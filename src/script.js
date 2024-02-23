@@ -190,6 +190,11 @@ function send_key() {
     let key = chords[layer][chord];
     layer = pre_global;
 
+    if (key === undefined) {
+        chord = [];
+        return;
+    }
+
     // Oneshot layers to return back to text
     if (layer === "punctuation") { layer = "text"; }
     
