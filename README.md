@@ -5,6 +5,8 @@ the name 1hant comes from obviously one + hand with the mispelling on purpose si
 
 it is meant as an easy to use layout trying to minimalize effort pressing on the keys hence most keys are a chord with 2 keys
 
+the bottom row is the home row
+
 ### Todo:
 - [x] typing test like [monkey type](https://monkeytype.com)
 - [ ] add wpm stat to the typing test

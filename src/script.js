@@ -68,28 +68,42 @@ const translation_presets = {
     }
 };
 const chords = {
-    "a,h": "g",
-    "e,i": "y",
-    "n,r": "o",
-    "s,t": "u",
-    "r,t": "d",
-    "a,e": "l",
-    "h,i": "c",
-    "n,s": "k",
-    "h,t": "m",
-    "h,r,t": "v",
-    "e,h": "w",
-    "a,i": "f",
-    "r,s": "p",
-    "n,t": "b",
-    "a,e,h": "j",
-    "r,s,t": "q",
-    "a,e,i": "x",
-    "n,r,t": "z",
-    
-    "a,e,h,i": " ", // Space
-    "n,r,s,t": "Backspace",
-    "a,e,i,s": "\n" // Enter
+    text: {
+        "a,h": "g",
+        "e,i": "y",
+        "n,r": "o",
+        "s,t": "u",
+        "r,t": "d",
+        "a,e": "l",
+        "h,i": "c",
+        "n,s": "k",
+        "h,t": "m",
+        "h,r,t": "v",
+        "e,h": "w",
+        "a,i": "f",
+        "r,s": "p",
+        "n,t": "b",
+        "a,e,h": "j",
+        "r,s,t": "q",
+        "a,e,i": "x",
+        "n,r,t": "z",
+
+        "a,e,h,i": " ", // Space
+        "n,r,s,t": "Backspace",
+        "a,e,i,s": "\n", // Enter
+
+        "e,i,s": "LayerPunctuation"
+    },
+    punctuation: {
+        "n": ";",
+        "r": ":",
+        "t": "'",
+        "s": "\"",
+        "i": "!",
+        "e": "?",
+        "a": ",",
+        "h": ".",
+    }
 };
 
 let translation = {
@@ -102,6 +116,7 @@ let translation = {
     e: "t",
     r: "s"
 };
+let layer = "text";
 let chord = [];
 
 input.addEventListener("keydown", keypress);
@@ -129,7 +144,7 @@ function keypress(e) {
 }
 
 function send_key() {
-    if (chord.length === 1) {
+    if (chord.length === 1 && layer === "text") {
         input.value += chord[0];
 
         type_check(chord[0]);
@@ -142,16 +157,21 @@ function send_key() {
     // and making it into a string its easy to find a chord like a,h in the dict
     chord = chord.sort().toString();
     
-    if (!(chord in chords)) {
+    if (!(chord in chords[layer])) {
         chord = [];
         return;
     }
     
-    let key = chords[chord];
+    let key = chords[layer][chord];
+
+    // Oneshot layers to return back to text
+    if (layer === "punctuation") { layer = "text"; }
     
     if (key === "Backspace") {
         input.value = input.value.slice(0, -1);
         type_check("Backspace");
+    } else if (key === "LayerPunctuation") {
+        layer = "punctuation";
     } else {
         input.value += key;
         type_check(key);
