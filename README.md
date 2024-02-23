@@ -14,7 +14,8 @@ the bottom row is the home row
 - [ ] keybinding menu
 - [ ] chord speed setting
 - [x] right hand support
-- [ ] punctuation & numbers
+- [x] punctuation & numbers
+- [ ] add remaining special characters
 - [ ] holding down a chord doesnt repeat the chord
 - [ ] make it pretty ✨
 
@@ -74,7 +75,18 @@ Oneshot Punctuation Layer:
 ...#
 ##..
 
+Number Layer:
+..##
+##..
+
 --- Punctuation ---
 ;:'"
 !?,.
+
+--- Number ---
+5678
+1234
+
+.... 0 | 9 ....
+##..       ..##
 ```

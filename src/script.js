@@ -93,7 +93,8 @@ const chords = {
         "n,r,s,t": "Backspace",
         "a,e,i,s": "\n", // Enter
 
-        "e,i,s": "LayerPunctuation"
+        "e,i,s": "LayerPunctuation",
+        "e,i,s,t": "LayerNumber"
     },
     punctuation: {
         "n": ";",
@@ -104,6 +105,21 @@ const chords = {
         "e": "?",
         "a": ",",
         "h": ".",
+
+        "i,s": "LayerText"
+    },
+    number: {
+        "n": "5",
+        "r": "6",
+        "t": "7",
+        "s": "8",
+        "i": "1",
+        "e": "2",
+        "a": "3",
+        "h": "4",
+
+        "e,i": "0",
+        "a,h": "9",
 
         "i,s": "LayerText"
     }
@@ -178,6 +194,8 @@ function send_key() {
         layer = "text";
     } else if (key === "LayerPunctuation") {
         layer = "punctuation";
+    } else if (key === "LayerNumber") {
+        layer = "number";
     } else {
         input.value += key;
         type_check(key);
