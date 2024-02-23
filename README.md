@@ -18,7 +18,8 @@ its focused for the left hand because most people use a mouse with their right h
 
 ### Layout:
 ```
--- left handed --
+this only shows the left handed layout to use this
+with the right hand flip everything horizontally
 
 nrts
 ieah
