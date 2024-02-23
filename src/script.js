@@ -140,6 +140,7 @@ let chord = [];
 input.addEventListener("keydown", keypress);
 translation_selection.addEventListener("change", update_layout);
 punctuation_checkbox.addEventListener("change", reset_typing_test);
+numbers_checkbox.addEventListener("change", reset_typing_test);
 
 update_layout();
 reset_typing_test();
