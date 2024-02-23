@@ -5,9 +5,15 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>1hant - tester</title>
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<p>currently only support graphite layout, with the left hand</p>
+	<p>press enter to do a new quote</p>
+
+	<div class="typing-test">
+		<pre class="text" id="tt-text">the quick brown fox jumps over the lazy dog</pre>
+		<pre class="type" id="tt-type"></pre>
+	</div>
 
 	<textarea id="input" cols="50" rows="15"></textarea>
 	<br>
@@ -17,8 +23,10 @@
 		<option value="qwerty-right">Qwerty (right hand)</option>
 		<option value="graphite-left">Graphite (left hand)</option>
 		<option value="graphite-right">Graphite (right hand)</option>
+		<option value="none">no translation</option>
 	</select>
 
+	<script src="random-words.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

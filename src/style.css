@@ -1,0 +1,49 @@
+.typing-test {
+    position: relative;
+    height: 1.2em;
+    margin-bottom: 1em;
+    
+    font-family: monospace;
+    font-size: 1.2em;
+    
+    -webkit-user-select: none;        
+    -moz-user-select: none;
+    -ms-user-select: none; 
+    user-select: none;
+}
+
+.typing-test .text {
+    opacity: 50%;
+    position: absolute;
+
+    top: -1em;
+    left: 0.25em;
+}
+
+.typing-test .type {
+    background: white;
+    position: absolute;
+    top: -1em;
+    left: 0.25em;
+}
+
+.typing-test .type .wrong {
+    color: red;
+    text-decoration: underline;
+}
+
+.typing-test .type::after {
+    content: "";
+    border-right: 1px solid black;
+    animation: 0.6s linear alternate infinite blinking_cursor;
+}
+
+@keyframes blinking_cursor {
+    from {
+        opacity: 100%;
+    }
+
+    to {
+        opacity: 0;
+    }
+}

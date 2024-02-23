@@ -1,5 +1,7 @@
 const input = document.getElementById("input");
 const translation_selection = document.getElementById("translation-selection");
+const tt_text = document.getElementById("tt-text");
+const tt_type = document.getElementById("tt-type");
 
 const chord_time_ms = 35;
 const translation_presets = {
@@ -43,6 +45,16 @@ const translation_presets = {
         o: "t",
         f: "s"
     },
+    "none": {
+        i: "i",
+        e: "e",
+        a: "a",
+        h: "h",
+        n: "n",
+        r: "r",
+        t: "t",
+        s: "s"
+    }
 };
 const chords = {
     "a,h": "g",
@@ -64,9 +76,9 @@ const chords = {
     "a,e,i": "x",
     "n,r,t": "z",
     
-    "a,e,h,i": "Space",
+    "a,e,h,i": " ", // Space
     "n,r,s,t": "Backspace",
-    "a,e,i,s": "Enter"
+    "a,e,i,s": "\n" // Enter
 };
 
 let translation = {
@@ -84,6 +96,9 @@ let chord = [];
 input.addEventListener("keydown", keypress);
 translation_selection.addEventListener("change", update_layout);
 
+update_layout();
+reset_typing_test();
+
 function keypress(e) {
     e.preventDefault();
     
@@ -100,6 +115,9 @@ function keypress(e) {
 function sendkey() {
     if (chord.length === 1) {
         input.value += chord[0];
+
+        type_check(chord[0]);
+
         chord = [];
         return;
     }
@@ -115,16 +133,48 @@ function sendkey() {
     
     let key = chords[chord];
     
-    if (key === "Space") { input.value += " "; }
-    else if (key === "Backspace") { input.value = input.value.slice(0, -1); }
-    else if (key === "Enter") { input.value += "\n"; }
-    else { input.value += key }
-    
+    if (key === "Backspace") {
+        input.value = input.value.slice(0, -1);
+        type_check("Backspace");
+    } else {
+        input.value += key;
+        type_check(key);
+    }
+
     chord = [];
 }
 
-function update_layout(e) {
-    let translation_selected = e.target.value;
+function update_layout() {
+    let translation_selected = translation_selection.value;
     translation = {};
     translation = translation_presets[translation_selected];
+}
+
+function type_check(key) {
+    if (key === "\n") {
+        reset_typing_test();
+        return;
+    }
+    else if (key === "Backspace") {
+        if (tt_type.innerHTML.slice(-1) == ">") {
+            tt_type.innerHTML = tt_type.innerHTML.slice(0, -28);
+        } else {
+            tt_type.innerHTML = tt_type.innerHTML.slice(0, -1);
+        }
+
+        return;
+    }
+
+    let letter = tt_text.innerText.slice(tt_type.innerText.length, tt_type.innerText.length + 1);
+
+    if (key === letter) {
+        tt_type.innerHTML += key;
+    } else {
+        tt_type.innerHTML += `<span class="wrong">${key}</span>`;
+    }
+}
+
+function reset_typing_test() {
+    tt_text.innerText = generate_sentence(10);
+    tt_type.innerText = "";
 }

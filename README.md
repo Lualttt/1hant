@@ -7,6 +7,8 @@ it is meant as an easy to use layout trying to minimalize effort pressing on the
 its focused for the left hand because most people use a mouse with their right hand
 
 ### Todo:
+- [x] typing test like [monkey type](https://monkeytype.com)
+- [ ] add wpm stat to the typing test
 - [ ] keybinding menu
 - [ ] chord speed setting
 - [x] right hand support
