@@ -50,15 +50,15 @@
 
 .keyboard {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr) 1.5fr;
+    grid-template-rows: repeat(2, 1fr) 0.9fr;
     grid-column-gap: 0.1em;
     grid-row-gap: 0.1em;
 
-    aspect-ratio: 4/2;
-    height: 5em;
+    aspect-ratio: 5.5/2.9;
+    height: 6em;
 
-    margin-bottom: 1em;
+    margin-bottom: 0.8em;
 }
 
 .keyboard.right {
@@ -79,4 +79,35 @@
 
 .keyboard .pressed {
     background-color: black;
+}
+
+#key-n {
+    grid-area: 1 / 1 / 2 / 2;
+}
+#key-r {
+    grid-area: 1 / 2 / 2 / 3;
+}
+#key-t {
+    grid-area: 1 / 3 / 2 / 4;
+}
+#key-s {
+    grid-area: 1 / 4 / 2 / 5;
+}
+
+#key-i {
+    grid-area: 2 / 1 / 3 / 2;
+}
+#key-e {
+    grid-area: 2 / 2 / 3 / 3;
+}
+#key-a {
+    grid-area: 2 / 3 / 3 / 4;
+}
+#key-h {
+    grid-area: 2 / 4 / 3 / 5;
+}
+
+#key-thumb {
+    grid-area: 3 / 5 / 4 / 6;
+    transform: translate(-0.8em, -0.4em) rotate(-45deg);
 }
