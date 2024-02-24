@@ -16,7 +16,8 @@ const translation_presets = {
         q: "n",
         w: "r",
         e: "t",
-        r: "s"
+        r: "s",
+        " ": " "
     },
     "qwerty-right": {
         ";": "i",
@@ -26,7 +27,8 @@ const translation_presets = {
         p: "n",
         o: "r",
         i: "t",
-        u: "s"
+        u: "s",
+        " ": " "
     },
     "graphite-left": {
         n: "i",
@@ -36,7 +38,8 @@ const translation_presets = {
         b: "n",
         l: "r",
         d: "t",
-        w: "s"
+        w: "s",
+        " ": " "
     },
     "graphite-right": {
         i: "i",
@@ -46,7 +49,8 @@ const translation_presets = {
         j: "n",
         u: "r",
         o: "t",
-        f: "s"
+        f: "s",
+        " ": " "
     },
     "none-left": {
         i: "i",
@@ -56,7 +60,8 @@ const translation_presets = {
         n: "n",
         r: "r",
         t: "t",
-        s: "s"
+        s: "s",
+        " ": " "
     },
     "none-right": {
         i: "i",
@@ -66,18 +71,19 @@ const translation_presets = {
         n: "n",
         r: "r",
         t: "t",
-        s: "s"
+        s: "s",
+        " ": " "
     }
 };
 const chords = {
     global: {
-        "a,e,h,i": " ", // Space
-        "n,r,s,t": "Backspace",
-        "a,e,i,s": "\n", // Enter
+        " ": " ", // Space
+        " ,a,h": "Backspace",
+        " ,h": "\n", // Enter
 
-        "i,s": "LayerText",
-        "e,i,s": "LayerPunctuation",
-        "e,i,s,t": "LayerNumber"
+        " ,s": "LayerText",
+        " ,t": "LayerPunctuation",
+        " ,r": "LayerNumber"
     },
     text: {
         "a,h": "g",
@@ -155,9 +161,9 @@ function keypress(e) {
         setTimeout(send_key, chord_time_ms);
     }
     
-    document.getElementById(`key-${key}`).classList.add("pressed");
+    document.getElementById(`key-${key.replace(" ", "thumb")}`).classList.add("pressed");
     setTimeout(() => {
-        document.getElementById(`key-${key}`).classList.remove("pressed");
+        document.getElementById(`key-${key.replace(" ", "thumb")}`).classList.remove("pressed");
     }, chord_time_ms + 50);
 
     chord.push(key);
