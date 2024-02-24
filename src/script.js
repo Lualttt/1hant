@@ -79,7 +79,7 @@ const translation_presets = {
 const chords = {
     global: {
         " ": " ", // Space
-        " ,a,h": "Backspace",
+        " ,e": "Backspace",
         " ,h": "\n", // Enter
 
         " ,s": "LayerText",

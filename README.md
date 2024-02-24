@@ -27,7 +27,7 @@ with the right hand flip everything horizontally
 --- Global Chords ---
 Space | Enter | Backspace
 ....  | ....  | ....
-....@ | ...#@ | ..##@
+....@ | ...#@ | .#..@
 
 Text  | Punct | Number
 ...#  | ..#.  | .#..
