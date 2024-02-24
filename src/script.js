@@ -3,6 +3,7 @@ const translation_selection = document.getElementById("translation-selection");
 const tt_text = document.getElementById("tt-text");
 const tt_type = document.getElementById("tt-type");
 const keyboard = document.getElementById("keyboard");
+const space_return = document.getElementById("space-return");
 const punctuation_checkbox = document.getElementById("punctuation");
 const numbers_checkbox = document.getElementById("numbers");
 
@@ -217,6 +218,10 @@ function send_key() {
     } else {
         input.value += key;
         type_check(key);
+    }
+
+    if (key === " " && space_return.checked) {
+        layer = "text";
     }
 
     chord = [];
