@@ -24,68 +24,53 @@ the bottom row is the home row
 this only shows the left handed layout to use this
 with the right hand flip everything horizontally
 
+--- Global Chords ---
+Space | Enter | Backspace
+....  | ....  | ....
+....@ | ...#@ | ..##@
+
+Text  | Punct | Number
+...#  | ..#.  | .#..
+....@ | ....@ | ....@
+
+--- Text Layer ---
 nrts
-ieah
+ieah_  (_ = space)
 
 .... g | y ....
-..##   |  ##...
+..##_  |  ##..._
 
 ##.. o | u ..##
-....   |   ....
+...._  |   ...._
 
 .##. d | l ....
-....   |   .##.
+...._  |   .##._
 
 .... c | k #..#
-#..#   |   ....
+#..#_  |   ...._
 
 ..#. m | v .##.
-...#   |   ...#
+...#_  |   ...#_
 
 .... w | f ....
-.#.#   |   #.#.
+.#.#_  |   #.#._
 
 .#.# p | b #.#.
-....   |   ....
+...._  |   ...._
 
 .... j | q .###
-.###   |   ....
+.###_  |   ...._
 
 .... x | z ###.
-###.   |   ....
+###._  |   ...._
 
-
-Space:
-....
-####
-
-Backspace:
-####
-....
-
-Enter:
-...#
-###.
-
-Text Layer (default):
-...#
-#...
-
-Oneshot Punctuation Layer:
-...#
-##..
-
-Number Layer:
-..##
-##..
-
---- Punctuation ---
+--- Punctuation Layer ---
 ;:'"
-!?,.
+!?,._
 
 --- Number ---
 5678
-1234
+1234_
 
 .... 0 | 9 ....
 ##..       ..##
