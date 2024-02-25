@@ -1,5 +1,3 @@
-const tt_text = document.getElementById("tt-text");
-const tt_type = document.getElementById("tt-type");
 const text_input = document.getElementById("text-input");
 const trans_select = document.getElementById("translation-selection");
 const punct_oneshot = document.getElementById("punct-oneshot");
