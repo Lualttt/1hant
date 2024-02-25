@@ -114,8 +114,6 @@ function chordPress(chord) {
         last_typed_key = key;
     }
 
-    console.log(key, last_layered_key, last_typed_key);
-
     if (chord_settings.punct_oneshot && current_layer === "punctuation") { current_layer = "text"; }
     if (chord_settings.space_return && key === " ") { current_layer = "text"; }
     
