@@ -152,10 +152,10 @@ numbers_checkbox.addEventListener("change", reset_typing_test);
 update_layout();
 reset_typing_test();
 
-function keypress(e) {
+function keyPress(e) {
     e.preventDefault();
     
-    let key = translation[e.key];
+    const key = translate(e);
     if (key === undefined) { return; }
     
     if (chord.length === 0) {
