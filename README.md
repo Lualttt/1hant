@@ -32,6 +32,12 @@ Text  | Punct | Number
 ...#  | ..#.  | .#..
 ....@ | ....@ | ....@
 
+Last Layered/Typed Key, you are able to switch these
+chords around with a setting
+LLK   | LTK
+....  | ....
+#...@ | ##..@
+
 --- Text Layer ---
 nrts
 ieah_  (_ = space)
