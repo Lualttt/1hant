@@ -11,8 +11,8 @@
 	<p>press enter to do a new quote</p>
 
 	<div class="typing-test">
-		<pre class="text" id="tt-text">the quick brown fox jumps over the lazy dog</pre>
-		<pre class="type" id="tt-type"></pre>
+		<pre class="test-text" id="test-text">the quick brown fox jumps over the lazy dog</pre>
+		<pre class="test-type" id="test-type"></pre>
 	</div>
 
 	<div class="keyboard" id="keyboard">
@@ -27,7 +27,8 @@
 		<div id="key-thumb"></div>
 	</div>
 
-	<textarea id="input" cols="50" rows="15"></textarea>
+	<textarea id="text-input" cols="50" rows="15"></textarea>
+
 	<br>
     <label for="translation-selection">Translation preset:</label>
 	<select id="translation-selection">
@@ -38,10 +39,13 @@
 		<option value="none-left">no translation (left hand)</option>
 		<option value="none-right">no translation (right hand)</option>
 	</select>
+	<hr>
+	<label for="punct-oneshot" title="wether it should return to the text layer after you pressed a key on the punctuation layer">Punctuation Oneshot 🛈:</label>
+	<input type="checkbox" id="punct-oneshot" checked>
 	<br>
 	<label for="space-return" title="if enabled when pressing space it will also return to the text layer">Space Return 🛈:</label>
 	<input type="checkbox" id="space-return" checked>
-	<br>
+	<hr>
 	<label for="punctuation">Punctuation:</label>
 	<input type="checkbox" id="punctuation">
 	<br>
@@ -49,6 +53,9 @@
 	<input type="checkbox" id="numbers">
 
 	<script src="random-words.js"></script>
+	<script src="translation.js"></script>
+	<script src="chording.js"></script>
+	<script src="typing-test.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

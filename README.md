@@ -12,11 +12,10 @@ the bottom row is the home row
 - [x] typing test like [monkey type](https://monkeytype.com)
 - [ ] add wpm stat to the typing test
 - [ ] keybinding menu
-- [ ] chord speed setting
 - [x] right hand support
 - [x] punctuation & numbers
 - [ ] add remaining special characters
-- [ ] holding down a chord doesnt repeat the chord
+- [x] holding down a chord doesnt repeat the chord
 - [ ] make it pretty ✨
 
 ### Layout:
