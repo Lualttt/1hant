@@ -9,7 +9,10 @@ const chords = {
 
         " ,s": "LayerText",
         " ,t": "LayerPunctuation",
-        " ,r": "LayerNumber"
+        " ,r": "LayerNumber",
+
+        " ,i": "LastLayeredKey",
+        " ,e,i": "LastTypedKey"
     },
     text: {
         "n": "n",
@@ -67,10 +70,13 @@ const chords = {
 
 let chord_settings = {
     punct_oneshot: true, // if the punctuation layer is oneshot
-    space_return: true // should it return to the text layer when space is pressed
+    space_return: true, // should it return to the text layer when space is pressed
+    switch_lk: false, // wether it should switch the chords for LLK and LTK
 };
 let current_layer = "text";
 let current_chord = [];
+let last_layered_key = "";
+let last_typed_key = "";
 
 function chordKeyDown(key) {
     if (current_chord.includes(key)) {
@@ -100,9 +106,25 @@ function chordPress(chord) {
     
     if (key === undefined) { return; }
     
+    if (key !== "LastLayeredKey" && key !== "LastTypedKey") {
+        if (current_layer !== "text") {
+            last_layered_key = key;
+        }
+
+        last_typed_key = key;
+    }
+
+    console.log(key, last_layered_key, last_typed_key);
+
     if (chord_settings.punct_oneshot && current_layer === "punctuation") { current_layer = "text"; }
     if (chord_settings.space_return && key === " ") { current_layer = "text"; }
     
+    if (key === "LastLayeredKey") {
+        key = chord_settings.switch_lk ? last_typed_key : last_layered_key;
+    } else if (key === "LastTypedKey") {
+        key = chord_settings.switch_lk ? last_layered_key : last_typed_key;
+    }
+
     switch (key) {
         case "LayerText":
             current_layer = "text"
