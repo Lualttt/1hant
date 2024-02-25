@@ -1008,7 +1008,7 @@ function generate_sentence(length, punctuation, numbers) {
     
     // did it in a funky way so it doesnt add a trailing space to the sentence
     for (let i = 0; i < length - 1; i++) {
-        let word =word_list[word_list.length * Math.random() | 0]
+        let word = word_list[word_list.length * Math.random() | 0]
 
         if (punctuation) {
             let ran = Math.random()

@@ -14,7 +14,8 @@ the bottom row is the home row
 - [ ] keybinding menu
 - [x] right hand support
 - [x] punctuation & numbers
-- [ ] add remaining special characters
+- [x] add remaining special characters
+- [ ] add modifier layout #5
 - [x] holding down a chord doesnt repeat the chord
 - [ ] make it pretty ✨
 
@@ -28,9 +29,9 @@ Space | Enter | Backspace
 ....  | ....  | ....
 ....@ | ...#@ | .#..@
 
-Text  | Punct | Number
-...#  | ..#.  | .#..
-....@ | ....@ | ....@
+Text  | Punct | Number | Special
+...#  | ..#.  | .#..   | #...
+....@ | ....@ | ....@  | ....@
 
 Last Layered/Typed Key, you are able to switch these
 chords around with a setting
@@ -79,4 +80,32 @@ ieah_  (_ = space)
 
 .... 0 | 9 ....
 ##..       ..##
+
+--- Special Layer ---
+/*-+
+_()&s (s = space)
+
+..##  = | @ ##..
+...._   |   ...._
+
+....  # | % ....
+##.._   |   ..##_
+
+....  $ | ~ .##.
+.##._   |   ...._
+
+..#. `  | ^ .##.
+...#_   |   ...#_
+
+....  { | } ....
+#.#._   |   .#.#_
+
+#.#.  [ | ] .#.#
+...._   |   ...._
+
+...#  < | > #...
+#..._   |   ...#_
+
+....  | | \ #..#
+#..#_   |   ...._
 ```
