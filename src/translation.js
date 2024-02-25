@@ -67,7 +67,7 @@ const translation_presets = {
     }
 };
 
-let translation = translation_presets["graphite-left"];
+let translation = translation_presets["qwerty-left"];
 
 function translate(key) {
     return translation[key];

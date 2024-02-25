@@ -1,21 +1,27 @@
-const text_input = document.getElementById("text-input");
-const translation_selection = document.getElementById("translation-selection");
 const tt_text = document.getElementById("tt-text");
 const tt_type = document.getElementById("tt-type");
-const keyboard = document.getElementById("keyboard");
+const text_input = document.getElementById("text-input");
+const trans_select = document.getElementById("translation-selection");
+const punct_oneshot = document.getElementById("punct-oneshot");
 const space_return = document.getElementById("space-return");
-const punctuation_checkbox = document.getElementById("punctuation");
-const numbers_checkbox = document.getElementById("numbers");
+const punctuation = document.getElementById("punctuation");
+const numbers = document.getElementById("numbers");
 
 document.addEventListener("chord", chordHandler);
 text_input.addEventListener("keydown", inputKeyDown);
 text_input.addEventListener("keyup", inputKeyUp);
+trans_select.addEventListener("change", () => { translation = translation_presets[trans_select.value]; });
+punct_oneshot.addEventListener("change", () => { chord_settings.punct_oneshot = punct_oneshot.checked; });
+space_return.addEventListener("change", () => { chord_settings.space_return = space_return.checked; });
+punctuation.addEventListener("change", () => { test_settings.punctuation = punctuation.checked; testNewSentence(); });
+numbers.addEventListener("change", () => { test_settings.numbers = numbers.checked; testNewSentence(); });
 
-translation_selection.addEventListener("change", update_layout);
-//punctuation_checkbox.addEventListener("change", reset_typing_test);
-//numbers_checkbox.addEventListener("change", reset_typing_test);
-
-update_layout();
+translation = translation_presets[trans_select.value];
+chord_settings.punct_oneshot = punct_oneshot.checked;
+chord_settings.space_return = space_return.checked;
+test_settings.punctuation = punctuation.checked;
+test_settings.numbers = numbers.checked;
+testNewSentence();
 
 function chordHandler(e) {
     const key = e.detail.key;
@@ -50,17 +56,4 @@ function inputKeyUp(e) {
     document.getElementById(`key-${key.replace(" ", "thumb")}`).classList.remove("key-pressed");
     
     chordKeyUp(key);
-}
-
-function update_layout() {
-    let translation_selected = translation_selection.value;
-
-    if (translation_selected.includes("right")) {
-        keyboard.classList.add("right");
-    } else {
-        keyboard.classList.remove("right");
-    }
-
-//    translation = {};
-//    translation = translation_presets[translation_selected];
 }

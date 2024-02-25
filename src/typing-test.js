@@ -1,11 +1,15 @@
 const test_text = document.getElementById("test-text");
 const test_type = document.getElementById("test-type");
 
-testNewSentence();
+let test_settings = {
+    punctuation: false,
+    numbers: false
+};
 
 function testKey(key) {
     if (key === "\n") {
         testNewSentence();
+        return;
     } else if (key === "Backspace") {
         if (test_type.innerHTML.slice(-1) === ">") {
             test_type.innerHTML = test_type.innerHTML.slice(0, -28);
@@ -25,6 +29,6 @@ function testKey(key) {
 }
 
 function testNewSentence() {
-    test_text.innerText = generate_sentence(10, true, true);
+    test_text.innerText = generate_sentence(10, test_settings.punctuation, test_settings.numbers);
     test_type.innerText = "";
 }

@@ -92,14 +92,12 @@ function chordKeyUp(key) {
 function chordPress(chord) {
     chord = chord.sort().toString();
     
-    key = chords[current_layer][chord];
+    let key = chords[current_layer][chord];
     
     if (chord in chords["global"]) {
         key = chords["global"][chord];
     }
     
-    console.log(key);
-
     if (key === undefined) { return; }
     
     if (chord_settings.punct_oneshot && current_layer === "punctuation") { current_layer = "text"; }
