@@ -92,27 +92,25 @@ function chordPress(chord) {
         key = chords["global"][chord];
     }
     
+    console.log(key);
+
     if (key === undefined) { return; }
     
-    if (chord_settings.punct_oneshot) { layer = "text"; }
-    if (chord_setting.space_return && key === " ") { layer = "text"; }
+    if (chord_settings.punct_oneshot && current_layer === "punctuation") { current_layer = "text"; }
+    if (chord_settings.space_return && key === " ") { current_layer = "text"; }
     
     switch (key) {
         case "LayerText":
-            layer = "text"
+            current_layer = "text"
             break;
         case "LayerPunctuation":
-            layer = "punctuation";
+            current_layer = "punctuation";
             break;
         case "LayerNumber":
-            layer = "number";
+            current_layer = "number";
             break;
         default:
-            document.dispatchEvent(
-                new CustomEvent(
-                    { key: key }
-                )
-            );
+            document.dispatchEvent(new CustomEvent("chord", { detail: { key: key } }));
             break;
     }
 }

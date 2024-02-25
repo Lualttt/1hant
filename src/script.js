@@ -1,4 +1,4 @@
-const input = document.getElementById("input");
+const text_input = document.getElementById("text-input");
 const translation_selection = document.getElementById("translation-selection");
 const tt_text = document.getElementById("tt-text");
 const tt_type = document.getElementById("tt-type");
@@ -7,20 +7,10 @@ const space_return = document.getElementById("space-return");
 const punctuation_checkbox = document.getElementById("punctuation");
 const numbers_checkbox = document.getElementById("numbers");
 
-let translation = {
-    a: "i",
-    s: "e",
-    d: "a",
-    f: "h",
-    q: "n",
-    w: "r",
-    e: "t",
-    r: "s"
-};
-let layer = "text";
-let chord = [];
+document.addEventListener("chord", chordHandler);
+text_input.addEventListener("keydown", inputKeyDown);
+text_input.addEventListener("keyup", inputKeyUp);
 
-input.addEventListener("keydown", keypress);
 translation_selection.addEventListener("change", update_layout);
 punctuation_checkbox.addEventListener("change", reset_typing_test);
 numbers_checkbox.addEventListener("change", reset_typing_test);
@@ -28,79 +18,39 @@ numbers_checkbox.addEventListener("change", reset_typing_test);
 update_layout();
 reset_typing_test();
 
-function keyPress(e) {
-    e.preventDefault();
-    
-    const key = translate(e);
-    if (key === undefined) { return; }
-    
-    if (chord.length === 0) {
-        setTimeout(send_key, chord_time_ms);
-    }
-    
-    document.getElementById(`key-${key.replace(" ", "thumb")}`).classList.add("pressed");
-    setTimeout(() => {
-        document.getElementById(`key-${key.replace(" ", "thumb")}`).classList.remove("pressed");
-    }, chord_time_ms + 50);
+function chordHandler(e) {
+    const key = e.detail.key;
 
-    chord.push(key);
+    console.log(e);
+
+    if (key === "Backspace") {
+        text_input.value = text_input.value.slice(0, -1);
+        return;
+    }
+
+    text_input.value += key;
 }
 
-function send_key() {
-    if (chord.length === 1 && layer === "text") {
-        input.value += chord[0];
+function inputKeyDown(e) {
+    e.preventDefault();
 
-        type_check(chord[0]);
+    const key = translate(e.key);
+    if (key === undefined) { return; }
 
-        chord = [];
-        return;
-    }
+    document.getElementById(`key-${key.replace(" ", "thumb")}`).classList.add("key-pressed");
+
+    chordKeyDown(key);
+}
+
+function inputKeyUp(e) {
+    e.preventDefault();
+
+    const key = translate(e.key);
+    if (key === undefined) { return; }
+
+    document.getElementById(`key-${key.replace(" ", "thumb")}`).classList.remove("key-pressed");
     
-    // sorting by alphabetical order means every chord will have the same order
-    // and making it into a string its easy to find a chord like a,h in the dict
-    chord = chord.sort().toString();
-    
-    let pre_global = layer;
-
-    if (!(chord in chords[layer])) {
-        if (!(chord) in chords["global"]) {
-            chord = [];
-            return;
-        }
-
-        layer = "global";
-    }
-    
-    let key = chords[layer][chord];
-    layer = pre_global;
-
-    if (key === undefined) {
-        chord = [];
-        return;
-    }
-
-    // Oneshot layers to return back to text
-    if (layer === "punctuation") { layer = "text"; }
-    
-    if (key === "Backspace") {
-        input.value = input.value.slice(0, -1);
-        type_check("Backspace");
-    } else if (key === "LayerText") {
-        layer = "text";
-    } else if (key === "LayerPunctuation") {
-        layer = "punctuation";
-    } else if (key === "LayerNumber") {
-        layer = "number";
-    } else {
-        input.value += key;
-        type_check(key);
-    }
-
-    if (key === " " && space_return.checked) {
-        layer = "text";
-    }
-
-    chord = [];
+    chordKeyUp(key);
 }
 
 function update_layout() {
@@ -112,8 +62,8 @@ function update_layout() {
         keyboard.classList.remove("right");
     }
 
-    translation = {};
-    translation = translation_presets[translation_selected];
+//    translation = {};
+//    translation = translation_presets[translation_selected];
 }
 
 function type_check(key) {

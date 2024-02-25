@@ -1,4 +1,4 @@
-const presets = {
+const translation_presets = {
     "qwerty-left": {
         a: "i",
         s: "e",
@@ -67,7 +67,7 @@ const presets = {
     }
 };
 
-let translation = presets["qwerty-left"];
+let translation = translation_presets["graphite-left"];
 
 function translate(key) {
     return translation[key];
