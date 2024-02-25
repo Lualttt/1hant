@@ -73,6 +73,12 @@ let current_layer = "text";
 let current_chord = [];
 
 function chordKeyDown(key) {
+    if (current_chord.includes(key)) {
+        chordPress(current_chord);
+
+        return;
+    }
+
     current_chord.push(key);
 }
 

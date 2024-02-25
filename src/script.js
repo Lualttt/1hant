@@ -21,8 +21,6 @@ reset_typing_test();
 function chordHandler(e) {
     const key = e.detail.key;
 
-    console.log(e);
-
     if (key === "Backspace") {
         text_input.value = text_input.value.slice(0, -1);
         return;
