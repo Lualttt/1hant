@@ -12,14 +12,15 @@ text_input.addEventListener("keydown", inputKeyDown);
 text_input.addEventListener("keyup", inputKeyUp);
 
 translation_selection.addEventListener("change", update_layout);
-punctuation_checkbox.addEventListener("change", reset_typing_test);
-numbers_checkbox.addEventListener("change", reset_typing_test);
+//punctuation_checkbox.addEventListener("change", reset_typing_test);
+//numbers_checkbox.addEventListener("change", reset_typing_test);
 
 update_layout();
-reset_typing_test();
 
 function chordHandler(e) {
     const key = e.detail.key;
+
+    testKey(key);
 
     if (key === "Backspace") {
         text_input.value = text_input.value.slice(0, -1);
@@ -62,33 +63,4 @@ function update_layout() {
 
 //    translation = {};
 //    translation = translation_presets[translation_selected];
-}
-
-function type_check(key) {
-    if (key === "\n") {
-        reset_typing_test();
-        return;
-    }
-    else if (key === "Backspace") {
-        if (tt_type.innerHTML.slice(-1) === ">") {
-            tt_type.innerHTML = tt_type.innerHTML.slice(0, -28);
-        } else {
-            tt_type.innerHTML = tt_type.innerHTML.slice(0, -1);
-        }
-
-        return;
-    }
-
-    let letter = tt_text.innerText.slice(tt_type.innerText.length, tt_type.innerText.length + 1);
-
-    if (key === letter) {
-        tt_type.innerHTML += key;
-    } else {
-        tt_type.innerHTML += `<span class="wrong">${key}</span>`;
-    }
-}
-
-function reset_typing_test() {
-    tt_text.innerText = generate_sentence(10, punctuation_checkbox.checked, numbers_checkbox.checked);
-    tt_type.innerText = "";
 }

@@ -12,7 +12,7 @@
     user-select: none;
 }
 
-.typing-test .text {
+.typing-test .test-text {
     opacity: 50%;
     position: absolute;
 
@@ -20,19 +20,19 @@
     left: 0.25em;
 }
 
-.typing-test .type {
+.typing-test .test-type {
     background: white;
     position: absolute;
     top: -1em;
     left: 0.25em;
 }
 
-.typing-test .type .wrong {
+.typing-test .test-type .wrong {
     color: red;
     text-decoration: underline;
 }
 
-.typing-test .type::after {
+.typing-test .test-type::after {
     content: "";
     border-right: 1px solid black;
     animation: 0.6s linear alternate infinite blinking_cursor;
