@@ -118,4 +118,9 @@ Alt Ctrl HCaps Shift
 
 ##..  Esc | FCaps ..##
 ...._     |       ...._
+
+#..#  Tab | Super .##.
+...._     |       ...._
+
+super =  gui, win, meta
 ```

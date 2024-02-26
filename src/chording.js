@@ -110,7 +110,10 @@ const chords = {
         "e,i": "Home",
         "a,h": "End",
         "a,i": "PageDown",
-        "e,h": "PageUp"
+        "e,h": "PageUp",
+
+        "n,s": "Tab",
+        "r,t": "Super"
     }
 };
 const capsules = {
@@ -255,6 +258,7 @@ function chordPress(chord) {
             break;
 
         default:
+            if (key.length !== 1 && key !== "Backspace") { return; }
             document.dispatchEvent(new CustomEvent("chord", { detail: { key: key } }));
             break;
     }
