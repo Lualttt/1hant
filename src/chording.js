@@ -12,8 +12,8 @@ const chords = {
         " ,r": "LayerNumber",
         " ,n": "LayerSpecial",
 
-        " ,i": "LastLayeredKey",
-        " ,e,i": "LastTypedKey"
+        " ,i": "CloseEncapsulatingKey",
+        " ,e,i": "LastLayeredKey"
     },
     text: {
         "n": "n",
@@ -95,17 +95,32 @@ const chords = {
         "n,s": "\\"
     }
 };
+const capsules = {
+    "\"": "\"",
+    "'": "'",
+    "`": "`",
+
+    "(": ")",
+    "{": "}",
+    "[": "]",
+    "<": ">",
+
+    ")": "(",
+    "}": "{",
+    "]": "[",
+    ">": "<",
+};
 
 let chord_settings = {
     punct_oneshot: true, // if the punctuation layer is oneshot
     special_oneshot: true, // if the special characters layer is oneshot
     space_return: true, // should it return to the text layer when space is pressed
-    switch_lk: false, // wether it should switch the chords for LLK and LTK
+    switch_llk: false, // wether it should switch the chords for CEK and LLK
 };
 let current_layer = "text";
 let current_chord = [];
 let last_layered_key = "";
-let last_typed_key = "";
+let last_capsule_key = "";
 
 function chordKeyDown(key) {
     if (current_chord.includes(key)) {
@@ -137,22 +152,33 @@ function chordPress(chord) {
     
     if (key === undefined) { return; }
     
-    if (key !== "LastLayeredKey" && key !== "LastTypedKey") {
-        if (current_layer !== "text" && !from_global) {
-            last_layered_key = key;
-        }
+    if (current_layer !== "text" && !from_global) {
+        last_layered_key = key;
+    }
 
-        last_typed_key = key;
+    if (key in capsules) {
+        last_capsule_key = key;
     }
 
     if (chord_settings.punct_oneshot && current_layer === "punctuation") { current_layer = "text"; }
     if (chord_settings.special_oneshot && current_layer === "special") { current_layer = "text"; }
     if (chord_settings.space_return && key === " ") { current_layer = "text"; }
     
-    if (key === "LastLayeredKey") {
-        key = chord_settings.switch_lk ? last_typed_key : last_layered_key;
-    } else if (key === "LastTypedKey") {
-        key = chord_settings.switch_lk ? last_layered_key : last_typed_key;
+    // it does the work ig
+    if (!chord_settings.switch_llk) {
+        if (key === "CloseEncapsulatingKey") {
+            key = capsules[last_capsule_key];
+            last_capsule_key = key;
+        } else if (key === "LastLayeredKey") {
+            key = last_layered_key;
+        }
+    } else {
+        if (key === "CloseEncapsulatingKey") {
+            key = last_layered_key;
+        } else if (key === "LastLayeredKey") {
+            key = capsules[last_capsule_key];
+            last_capsule_key = key;
+        }
     }
 
     switch (key) {
