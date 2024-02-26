@@ -29,9 +29,9 @@ Space | Enter | Backspace
 ....  | ....  | ....
 ....@ | ...#@ | .#..@
 
-Text  | Punct | Number | Special
-...#  | ..#.  | .#..   | #...
-....@ | ....@ | ....@  | ....@
+Text  | Punct | Number | Special | Modifier
+...#  | ..#.  | .#..   | #...    | #..#
+....@ | ....@ | ....@  | ....@   | ....@
 
 Last Layered/Typed Key, you are able to switch these
 chords around with a setting
@@ -108,4 +108,14 @@ _()&s (s = space)
 
 ....  | | \ #..#
 #..#_   |   ...._
+
+--- Modifier Layour
+HalfCaps will only have capslock until you press a space
+FullCaps will act like a normal capslock
+
+Alt Ctrl HCaps Shift
+<-    ^    v    ->
+
+##..  Esc | FCaps ..##
+...._     |       ...._
 ```
