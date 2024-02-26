@@ -15,7 +15,7 @@ the bottom row is the home row
 - [x] right hand support
 - [x] punctuation & numbers
 - [x] add remaining special characters
-- [ ] add modifier layout [#5](https://github.com/LualtOfficial/1hant/issues/5)
+- [x] add modifier layout [#5](https://github.com/LualtOfficial/1hant/issues/5)
 - [x] holding down a chord doesnt repeat the chord
 - [ ] make it pretty ✨
 
