@@ -186,7 +186,7 @@ function chordPress(chord) {
     
     switch (chord_settings.modifier_oneshot) {
         case "half":
-            if (["Alt", "Control", "HalfCapslock", "Shift"].includes(key)) {
+            if (!["Left", "Up", "Down", "Right"].includes(key)) {
                 current_layer = "text";
             }
             break;
