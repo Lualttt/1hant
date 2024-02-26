@@ -46,6 +46,13 @@
 	<label for="special-oneshot" title="wether it should return to the text layer after you pressed a key on the special characters layer">Special Oneshot 🛈:</label>
 	<input type="checkbox" id="special-oneshot" checked>
 	<br>
+	<label for="modifier-oneshot" title="how the oneshot should act on the modifier layout, if its the top half only when you use the top row of keys it will be oneshot, if its full everykey will return to the text layer, and none wont return at all">Modifier Oneshot 🛈:</label>
+	<select id="modifier-oneshot">
+		<option value="half">Top Half</option>
+		<option value="full">Full</option>
+		<option value="none">None</option>
+	</select>
+	<br>
 	<label for="space-return" title="if enabled when pressing space it will also return to the text layer">Space Return 🛈:</label>
 	<input type="checkbox" id="space-return" checked>
 	<br>

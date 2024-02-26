@@ -11,6 +11,7 @@ const chords = {
         " ,t": "LayerPunctuation",
         " ,r": "LayerNumber",
         " ,n": "LayerSpecial",
+        " ,n,s": "LayerModifier",
 
         " ,i": "CloseEncapsulatingKey",
         " ,e,i": "LastLayeredKey"
@@ -93,6 +94,23 @@ const chords = {
         "h,n": ">",
         "h,i": "|",
         "n,s": "\\"
+    },
+    modifier: {
+        "n": "Alt",
+        "r": "Control",
+        "t": "HalfCapslock",
+        "s": "Shift",
+        "i": "Left",
+        "e": "Up",
+        "a": "Down",
+        "h": "Right",
+
+        "s,t": "FullCapslock",
+        "n,r": "Escape",
+        "e,i": "Home",
+        "a,h": "End",
+        "a,i": "PageDown",
+        "e,h": "PageUp"
     }
 };
 const capsules = {
@@ -114,6 +132,7 @@ const capsules = {
 let chord_settings = {
     punct_oneshot: true, // if the punctuation layer is oneshot
     special_oneshot: true, // if the special characters layer is oneshot
+    modifier_oneshot: "half", // how the oneshot on the modifier layer should act
     space_return: true, // should it return to the text layer when space is pressed
     switch_llk: false, // wether it should switch the chords for CEK and LLK
 };
@@ -121,6 +140,7 @@ let current_layer = "text";
 let current_chord = [];
 let last_layered_key = "";
 let last_capsule_key = "";
+let capitalize_key = "";
 
 function chordKeyDown(key) {
     if (current_chord.includes(key)) {
@@ -164,6 +184,19 @@ function chordPress(chord) {
     if (chord_settings.special_oneshot && current_layer === "special") { current_layer = "text"; }
     if (chord_settings.space_return && key === " ") { current_layer = "text"; }
     
+    switch (chord_settings.modifier_oneshot) {
+        case "half":
+            if (["Alt", "Control", "HalfCapslock", "Shift"].includes(key)) {
+                current_layer = "text";
+            }
+            break;
+        case "full":
+            current_layer = "text";
+            break;
+        default:
+            break;
+    }
+
     // it does the work ig
     if (!chord_settings.switch_llk) {
         if (key === "CloseEncapsulatingKey") {
@@ -181,7 +214,32 @@ function chordPress(chord) {
         }
     }
 
+    // wow my code is garbage LOL
+    if (key.length === 1) {
+        if (capitalize_key === "Shift") {
+            key = key.toUpperCase();
+            capitalize_key = "";
+        } else if (capitalize_key === "HalfCapslock") {
+            key = key.toUpperCase();
+            if (key === " ") { capitalize_key = ""; }
+        } else if (capitalize_key === "FullCapslock") {
+            key = key.toUpperCase();
+        }
+    }
+
+    console.log(key, capitalize_key)    
+
     switch (key) {
+        case "Shift":
+            capitalize_key = "Shift";
+            break;
+        case "HalfCapslock":
+            capitalize_key = capitalize_key === "HalfCapslock" ? "" : "HalfCapslock";
+            break;
+        case "FullCapslock":
+            capitalize_key = capitalize_key === "FullCapslock" ? "" : "FullCapslock";
+            break;
+
         case "LayerText":
             current_layer = "text"
             break;
@@ -194,6 +252,10 @@ function chordPress(chord) {
         case "LayerSpecial":
             current_layer = "special";
             break;
+        case "LayerModifier":
+            current_layer = "modifier";
+            break;
+
         default:
             document.dispatchEvent(new CustomEvent("chord", { detail: { key: key } }));
             break;
