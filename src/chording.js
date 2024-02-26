@@ -129,14 +129,16 @@ function chordPress(chord) {
     
     let key = chords[current_layer][chord];
     
+    let from_global = false;
     if (chord in chords["global"]) {
         key = chords["global"][chord];
+        from_global = true;
     }
     
     if (key === undefined) { return; }
     
     if (key !== "LastLayeredKey" && key !== "LastTypedKey") {
-        if (current_layer !== "text") {
+        if (current_layer !== "text" && !from_global) {
             last_layered_key = key;
         }
 
