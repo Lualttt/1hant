@@ -10,6 +10,7 @@ const chords = {
         " ,s": "LayerText",
         " ,t": "LayerPunctuation",
         " ,r": "LayerNumber",
+        " ,n": "LayerSpecial",
 
         " ,i": "LastLayeredKey",
         " ,e,i": "LastTypedKey"
@@ -65,11 +66,39 @@ const chords = {
 
         "e,i": "0",
         "a,h": "9"
+    },
+    special: {
+        "n": "/",
+        "r": "*",
+        "t": "-",
+        "s": "+",
+        "i": "_",
+        "e": "(",
+        "a": ")",
+        "h": "&",
+
+        "s,t": "=",
+        "n,r": "@",
+        "e,i": "#",
+        "a,h": "%",
+        "a,e": "$",
+        "r,t": "~",
+        "h,t": "`",
+        "h,r,t": "^",
+        "a,i": "{",
+        "e,h": "}",
+        "n,t": "[",
+        "r,s": "]",
+        "i,s": "<",
+        "h,n": ">",
+        "h,i": "|",
+        "n,s": "\\"
     }
 };
 
 let chord_settings = {
     punct_oneshot: true, // if the punctuation layer is oneshot
+    special_oneshot: true, // if the special characters layer is oneshot
     space_return: true, // should it return to the text layer when space is pressed
     switch_lk: false, // wether it should switch the chords for LLK and LTK
 };
@@ -115,6 +144,7 @@ function chordPress(chord) {
     }
 
     if (chord_settings.punct_oneshot && current_layer === "punctuation") { current_layer = "text"; }
+    if (chord_settings.special_oneshot && current_layer === "special") { current_layer = "text"; }
     if (chord_settings.space_return && key === " ") { current_layer = "text"; }
     
     if (key === "LastLayeredKey") {
@@ -132,6 +162,9 @@ function chordPress(chord) {
             break;
         case "LayerNumber":
             current_layer = "number";
+            break;
+        case "LayerSpecial":
+            current_layer = "special";
             break;
         default:
             document.dispatchEvent(new CustomEvent("chord", { detail: { key: key } }));

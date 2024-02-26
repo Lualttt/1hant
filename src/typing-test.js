@@ -3,7 +3,8 @@ const test_type = document.getElementById("test-type");
 
 let test_settings = {
     punctuation: false,
-    numbers: false
+    numbers: false,
+    special: false,
 };
 
 function testKey(key) {
@@ -29,6 +30,6 @@ function testKey(key) {
 }
 
 function testNewSentence() {
-    test_text.innerText = generate_sentence(10, test_settings.punctuation, test_settings.numbers);
+    test_text.innerText = generate_sentence(10, test_settings.punctuation, test_settings.numbers, test_settings.special);
     test_type.innerText = "";
 }

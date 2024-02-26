@@ -1,27 +1,33 @@
 const text_input = document.getElementById("text-input");
 const trans_select = document.getElementById("translation-selection");
 const punct_oneshot = document.getElementById("punct-oneshot");
+const special_oneshot = document.getElementById("special-oneshot");
 const space_return = document.getElementById("space-return");
 const switch_lk = document.getElementById("switch-lk");
 const punctuation = document.getElementById("punctuation");
 const numbers = document.getElementById("numbers");
+const special = document.getElementById("special");
 
 document.addEventListener("chord", chordHandler);
 text_input.addEventListener("keydown", inputKeyDown);
 text_input.addEventListener("keyup", inputKeyUp);
 trans_select.addEventListener("change", () => { translation = translation_presets[trans_select.value]; });
 punct_oneshot.addEventListener("change", () => { chord_settings.punct_oneshot = punct_oneshot.checked; });
+special_oneshot.addEventListener("change", () => { chord_settings.special_oneshot = special_oneshot.checked; });
 space_return.addEventListener("change", () => { chord_settings.space_return = space_return.checked; });
 switch_lk.addEventListener("change", () => { chord_settings.switch_lk = switch_lk.checked; });
 punctuation.addEventListener("change", () => { test_settings.punctuation = punctuation.checked; testNewSentence(); });
 numbers.addEventListener("change", () => { test_settings.numbers = numbers.checked; testNewSentence(); });
+special.addEventListener("change", () => { test_settings.special = special.checked; testNewSentence(); });
 
 translation = translation_presets[trans_select.value];
 chord_settings.punct_oneshot = punct_oneshot.checked;
+chord_settings.special_oneshot = special_oneshot.checked;
 chord_settings.space_return = space_return.checked;
 chord_settings.switch_lk = switch_lk.checked;
 test_settings.punctuation = punctuation.checked;
 test_settings.numbers = numbers.checked;
+test_settings.special = special.checked;
 testNewSentence();
 
 function chordHandler(e) {

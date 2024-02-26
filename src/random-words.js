@@ -1003,15 +1003,27 @@ const word_list = [
 ]
 
 // this code kinda stinky ngl but it works
-function generate_sentence(length, punctuation, numbers) {
+function generate_sentence(length, punctuation, numbers, special) {
     let sentence = "";
     
     // did it in a funky way so it doesnt add a trailing space to the sentence
     for (let i = 0; i < length - 1; i++) {
-        let word =word_list[word_list.length * Math.random() | 0]
+        let word = word_list[word_list.length * Math.random() | 0]
+
+        if (special) {
+            let ran = Math.random();
+
+            if (ran < 0.2) {
+                let char = ["/", "*", "-", "+", "_", "&", "=", "@", "#", "%", "$", "~", "^", "|", "\\"][15 * Math.random() | 0];
+                word = word + " " + char;
+            } else if (ran > 0.8) {
+                let char = [["(", ")"], ["`", "`"], ["{", "}"], ["[", "]"], ["<", ">"]][5 * Math.random() | 0];
+                word = char[0] + word + char[1];
+            }
+        }
 
         if (punctuation) {
-            let ran = Math.random()
+            let ran = Math.random();
 
             if (ran < 0.1) {
                 let char = Math.random() < 0.5 ? '"' : "'";
