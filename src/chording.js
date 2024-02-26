@@ -227,8 +227,6 @@ function chordPress(chord) {
         }
     }
 
-    console.log(key, capitalize_key)    
-
     switch (key) {
         case "Shift":
             capitalize_key = "Shift";
