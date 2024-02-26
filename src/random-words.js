@@ -1017,14 +1017,10 @@ function generate_sentence(length, punctuation, numbers, special, capitalization
         if (capitalization) {
             let ran = Math.random();
 
-            console.log(capitalization, ran);
-
             if (ran < 0.2) {
                 word = word.toUpperCase();
-                console.log(word);
             } else if (ran > 0.8) {
                 word = word.charAt(0).toUpperCase() + word.slice(1);
-                console.log(word);
             }
         }
 
