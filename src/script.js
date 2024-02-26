@@ -6,6 +6,7 @@ const space_return = document.getElementById("space-return");
 const switch_lk = document.getElementById("switch-lk");
 const punctuation = document.getElementById("punctuation");
 const numbers = document.getElementById("numbers");
+const special = document.getElementById("special");
 
 document.addEventListener("chord", chordHandler);
 text_input.addEventListener("keydown", inputKeyDown);
@@ -17,6 +18,7 @@ space_return.addEventListener("change", () => { chord_settings.space_return = sp
 switch_lk.addEventListener("change", () => { chord_settings.switch_lk = switch_lk.checked; });
 punctuation.addEventListener("change", () => { test_settings.punctuation = punctuation.checked; testNewSentence(); });
 numbers.addEventListener("change", () => { test_settings.numbers = numbers.checked; testNewSentence(); });
+special.addEventListener("change", () => { test_settings.special = special.checked; testNewSentence(); });
 
 translation = translation_presets[trans_select.value];
 chord_settings.punct_oneshot = punct_oneshot.checked;
@@ -25,6 +27,7 @@ chord_settings.space_return = space_return.checked;
 chord_settings.switch_lk = switch_lk.checked;
 test_settings.punctuation = punctuation.checked;
 test_settings.numbers = numbers.checked;
+test_settings.special = special.checked;
 testNewSentence();
 
 function chordHandler(e) {
