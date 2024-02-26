@@ -187,17 +187,19 @@ function chordPress(chord) {
     if (chord_settings.special_oneshot && current_layer === "special") { current_layer = "text"; }
     if (chord_settings.space_return && key === " ") { current_layer = "text"; }
     
-    switch (chord_settings.modifier_oneshot) {
-        case "half":
-            if (!["Left", "Up", "Down", "Right"].includes(key)) {
-                current_layer = "text";
-            }
+    if (current_layer === "modifier") {
+        switch (chord_settings.modifier_oneshot) {
+            case "half":
+                if (!["Left", "Up", "Down", "Right"].includes(key)) {
+                    current_layer = "text";
+                }
             break;
-        case "full":
-            current_layer = "text";
-            break;
-        default:
-            break;
+                case "full":
+                    current_layer = "text";
+                    break;
+                    default:
+                        break;
+        }
     }
 
     // it does the work ig
