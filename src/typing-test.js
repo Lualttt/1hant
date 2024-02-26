@@ -5,6 +5,7 @@ let test_settings = {
     punctuation: false,
     numbers: false,
     special: false,
+    capitalization: false
 };
 
 function testKey(key) {
@@ -30,6 +31,6 @@ function testKey(key) {
 }
 
 function testNewSentence() {
-    test_text.innerText = generate_sentence(10, test_settings.punctuation, test_settings.numbers, test_settings.special);
+    test_text.innerText = generate_sentence(10, test_settings.punctuation, test_settings.numbers, test_settings.special, test_settings.capitalization);
     test_type.innerText = "";
 }

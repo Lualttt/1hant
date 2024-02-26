@@ -8,6 +8,7 @@ const switch_llk = document.getElementById("switch-llk");
 const punctuation = document.getElementById("punctuation");
 const numbers = document.getElementById("numbers");
 const special = document.getElementById("special");
+const capitalization = document.getElementById("capitalization");
 
 document.addEventListener("chord", chordHandler);
 text_input.addEventListener("keydown", inputKeyDown);
@@ -21,6 +22,7 @@ switch_llk.addEventListener("change", () => { chord_settings.switch_llk = switch
 punctuation.addEventListener("change", () => { test_settings.punctuation = punctuation.checked; testNewSentence(); });
 numbers.addEventListener("change", () => { test_settings.numbers = numbers.checked; testNewSentence(); });
 special.addEventListener("change", () => { test_settings.special = special.checked; testNewSentence(); });
+capitalization.addEventListener("change", () => { test_settings.capitalization = capitalization.checked; testNewSentence(); });
 
 translation = translation_presets[trans_select.value];
 chord_settings.punct_oneshot = punct_oneshot.checked;
@@ -31,6 +33,7 @@ chord_settings.switch_llk = switch_llk.checked;
 test_settings.punctuation = punctuation.checked;
 test_settings.numbers = numbers.checked;
 test_settings.special = special.checked;
+test_settings.capitalization = capitalization.checked;
 testNewSentence();
 
 function chordHandler(e) {

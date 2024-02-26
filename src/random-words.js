@@ -1003,12 +1003,30 @@ const word_list = [
 ]
 
 // this code kinda stinky ngl but it works
-function generate_sentence(length, punctuation, numbers, special) {
+function generate_sentence(length, punctuation, numbers, special, capitalization) {
     let sentence = "";
     
     // did it in a funky way so it doesnt add a trailing space to the sentence
     for (let i = 0; i < length - 1; i++) {
         let word = word_list[word_list.length * Math.random() | 0]
+
+        if (!capitalization) {
+            word = word.toLowerCase();
+        }
+
+        if (capitalization) {
+            let ran = Math.random();
+
+            console.log(capitalization, ran);
+
+            if (ran < 0.2) {
+                word = word.toUpperCase();
+                console.log(word);
+            } else if (ran > 0.8) {
+                word = word.charAt(0).toUpperCase() + word.slice(1);
+                console.log(word);
+            }
+        }
 
         if (special) {
             let ran = Math.random();
@@ -1048,6 +1066,5 @@ function generate_sentence(length, punctuation, numbers, special) {
         sentence += [".", "!", "?"][3 * Math.random() | 0];
     }
 
-    // currently there is no support for uppercase
-    return sentence.toLowerCase();
+    return sentence;
 }
