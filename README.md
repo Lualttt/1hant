@@ -33,9 +33,9 @@ Text  | Punct | Number | Special | Modifier
 ...#  | ..#.  | .#..   | #...    | #..#
 ....@ | ....@ | ....@  | ....@   | ....@
 
-Last Layered/Typed Key, you are able to switch these
+Closed Encapsulating Key & Last Layered Key, you are able to switch these
 chords around with a setting
-LLK   | LTK
+CEK   | LLK
 ....  | ....
 #...@ | ##..@
 
